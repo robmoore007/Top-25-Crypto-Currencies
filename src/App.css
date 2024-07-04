@@ -1,31 +1,28 @@
 .App {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+h1 {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+th, td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
 }
 
-.App-link {
-  color: #61dafb;
+th {
+  cursor: pointer;
 }
 
-.heart {
-  color: #ff0000;
-}
-
-.small {
-  font-size: 0.75rem;
+th:hover {
+  background-color: #f1f1f1;
 }
