@@ -26,10 +26,19 @@ const CryptoTable = () => {
     }, []);
 
     const sortedCryptos = [...cryptos].sort((a, b) => {
-        if (a[sortConfig.key] < b[sortConfig.key]) {
+        let aValue = a[sortConfig.key];
+        let bValue = b[sortConfig.key];
+
+        // Convert relevant fields to numbers for correct sorting
+        if (sortConfig.key === 'rank' || sortConfig.key === 'priceUsd') {
+            aValue = Number(aValue);
+            bValue = Number(bValue);
+        }
+
+        if (aValue < bValue) {
             return sortConfig.direction === 'ascending' ? -1 : 1;
         }
-        if (a[sortConfig.key] > b[sortConfig.key]) {
+        if (aValue > bValue) {
             return sortConfig.direction === 'ascending' ? 1 : -1;
         }
         return 0;
@@ -52,9 +61,9 @@ const CryptoTable = () => {
                     <TableHeader title="Symbol" onClick={() => requestSort('symbol')} />
                     <th>Link</th>
                     <TableHeader title="Price (USD)" onClick={() => requestSort('priceUsd')} />
-                    <TableHeader title="Price (GBP)" />
-                    <TableHeader title="Price (EUR)" />
-                    <TableHeader title="Price (AED)" />
+                    <TableHeader title="Price (GBP)" onClick={() => requestSort('priceGbp')} />
+                    <TableHeader title="Price (EUR)" onClick={() => requestSort('priceEur')} />
+                    <TableHeader title="Price (AED)" onClick={() => requestSort('priceAed')} />
                 </tr>
             </thead>
             <tbody>
@@ -67,3 +76,5 @@ const CryptoTable = () => {
 };
 
 export default CryptoTable;
+
+
